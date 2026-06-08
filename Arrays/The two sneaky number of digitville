@@ -1,0 +1,24 @@
+import java.util.*;
+
+class Solution {
+    public int[] getSneakyNumbers(int[] nums) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        ArrayList<Integer> result = new ArrayList<>();
+
+        for (int n : nums) {
+            map.put(n, map.getOrDefault(n, 0) + 1);
+        }
+
+        for (Map.Entry<Integer, Integer> e : map.entrySet()) {
+            if (e.getValue() == 2)
+                result.add(e.getKey());
+        }
+
+        // Convert ArrayList<Integer> to int[]
+        int[] ans = new int[result.size()];
+        for (int i = 0; i < result.size(); i++) {
+            ans[i] = result.get(i);
+        }
+        return ans;
+    }
+}
